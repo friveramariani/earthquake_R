@@ -1,0 +1,25 @@
+---
+title: "earthquake_R: Earthquake Analysis and Visualization Tools"
+author: "Félix E. Rivera-Mariani"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{earthquake_R: Earthquake Analysis and Visualization Tools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+`earthquake_R` is an R package designed to help you clean, analyze, and visualize earthquake data from NOAA. With `quakeR` you can:
+
+- Clean and preprocess earthquake datasets.
+- Create interactive maps of earthquake epicenters.
+- Generate timeline plots of earthquake events.
+
+# Getting Started
+
+Make sure you have installed the necessary dependencies. Then, load the package:
+
+```r
+library(quakeR)
