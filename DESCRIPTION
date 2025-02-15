@@ -1,0 +1,20 @@
+Package: earthquake_R
+Type: Package
+Title: Earthquake Analysis and Visualization Tools
+Version: 0.1.0
+Authors@R: person('Félix', 'Rivera-Mariani', email = 'felixrm@friveram.com', 
+                 role = c('aut', 'cre'))
+Description: >
+    quakeR provides a suite of tools for cleaning, analyzing, and visualizing
+    earthquake data from NOAA. The package includes functions for data cleaning,
+    creating interactive maps, and generating timeline plots.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    lubridate,
+    leaflet,
+    ggplot2,
+    rlang,
+    grid
