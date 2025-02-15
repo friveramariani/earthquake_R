@@ -23,3 +23,53 @@ Make sure you have installed the necessary dependencies. Then, load the package:
 
 ```r
 library(quakeR)
+
+# Read raw data and clean it
+raw_data <- readr::read_delim("path/to/earthquakes.tsv.gz", delim = "\t")
+clean_data <- eq_clean_data(raw_data)
+head(clean_data)
+
+locations <- c("USA: SAN FRANCISCO", "MEXICO: GUADALAJARA")
+clean_locations <- eq_location_clean(locations)
+print(clean_locations)
+
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+# Filter and plot timeline
+clean_data %>%
+  mutate_at(vars(DEATHS, EQ_PRIMARY), as.numeric) %>%
+  filter(str_detect(tolower(COUNTRY), "china|usa$|pakistan")) %>%
+  filter(DATE >= "2000-01-01") %>%
+  ggplot(aes(x = DATE, y = COUNTRY, size = EQ_PRIMARY, fill = DEATHS)) +
+  geom_timeline() +
+  geom_timeline_label(aes(label = LOCATION_NAME, n_max_var = DEATHS), n_max = 5) +
+  theme_timeline()
+
+library(dplyr)
+library(lubridate)
+
+# Filter data for mapping
+map_data <- clean_data %>%
+  filter(COUNTRY == "MEXICO", lubridate::year(DATE) >= 2000) %>%
+  eq_map_add_popup()
+
+# Plot the map (using popup_text for annotations)
+eq_map(map_data, annot_col = "popup_text")
+
+
+---
+
+### 5. Committing and Pushing to GitHub
+
+Once you’ve updated your documentation, run:
+
+```bash
+# In your package root directory:
+Rscript -e "devtools::document()"
+
+# Then commit and push your changes:
+git add .
+git commit -m "Add documentation, DESCRIPTION, LICENSE, NAMESPACE, and vignette"
+git push origin main
