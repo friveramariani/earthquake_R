@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: person('Félix', 'Rivera-Mariani', email = 'felixrm@friveram.com', 
                  role = c('aut', 'cre'))
 Description: >
-    quakeR provides a suite of tools for cleaning, analyzing, and visualizing
+    earthquake_R provides a suite of tools for cleaning, analyzing, and visualizing
     earthquake data from NOAA. The package includes functions for data cleaning,
     creating interactive maps, and generating timeline plots.
 License: MIT + file LICENSE
